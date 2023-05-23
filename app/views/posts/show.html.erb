@@ -6,6 +6,11 @@
   <div class="title">
     <h2><%= @post.title %></h2>
   </div>
+  <div class="foto">
+    <% if @post.attachment.attached? %>
+      <%= image_tag url_for(@post.attachment), class: "img" %>
+    <% end %>
+  </div>
 </div>
 <hr>
 <div class="float-end pt-1">

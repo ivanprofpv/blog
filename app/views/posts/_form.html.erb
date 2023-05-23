@@ -6,19 +6,21 @@
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Create post</h2>
 
-                <%= form_with model: @post, local: false do |f| %>
+                <%= form_with model: @post do |f| %>
                 <div class="post-errors">
                   <%= render 'shared/errors', resource: @post %>
                 </div>
-
-                <div class="form-floating mb-5">
-                  <%= f.text_field :title, class: "form-control", placeholder: "Title", id: "floatingTextarea" %>
-                  <label for="floatingTextarea">Title</label>
+                <div class="mb-5">
+                  <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
                 </div>
 
-                <div class="form-floating mb-5">
-                  <%= f.text_area :body, class: "form-control", placeholder: "Body", id: "floatingTextfield" %>
-                  <label for="floatingTextfield">Body</label>
+                <div class="mb-5">
+                  <%= f.text_area :body, class: "form-control", placeholder: "Body" %>
+                </div>
+
+                <div class="input-group mb-5">
+                  <label class="input-group-text" for="inputGroupAttachment">Upload foto</label>
+                  <%= f.file_field :attachment, class: "form-control", id: "inputGroupAttachment"%>
                 </div>
 
                 <div class="d-grid gap-2">
