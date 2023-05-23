@@ -1,0 +1,34 @@
+<div class="post_content">
+  <% if user_signed_in? %>
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-9">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Edit post</h2>
+
+                <%= form_with model: @post, local: true do |f| %>
+                <div class="post-errors">
+                  <%= render 'shared/errors', resource: @post %>
+                </div>
+
+                <div class="form-floating mb-5">
+                  <%= f.text_field :title, class: "form-control", placeholder: "Title", id: "floatingTextarea" %>
+                  <label for="floatingTextarea">Title</label>
+                </div>
+
+                <div class="form-floating mb-5">
+                  <%= f.text_area :body, class: "form-control", placeholder: "Body", id: "floatingTextfield" %>
+                  <label for="floatingTextfield">Body</label>
+                </div>
+
+                <div class="d-grid gap-2">
+                  <%= f.submit "Update", class: 'btn btn-info btn-lg' %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
