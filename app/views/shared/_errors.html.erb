@@ -1,0 +1,10 @@
+<% if resource&.errors.present? %>
+  <div class="alert alert-danger" role="alert">
+    <%= "#{resource.errors.count} error(s) detected: " %>
+      <ul>
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+    <% end %>
+      </ul>
+  </div>
+<% end %>

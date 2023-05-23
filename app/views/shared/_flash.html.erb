@@ -1,0 +1,3 @@
+<% flash.each do |key, message| %>
+  <%= content_tag :div, message, class: "alert alert-success mt-3 alert-#{key}" %>
+<% end %>
