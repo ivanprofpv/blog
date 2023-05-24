@@ -1,0 +1,16 @@
+<div class="form_comment">
+  <div class="comment-errors">
+    <%= render 'shared/errors', resource: @comment %>
+  </div>
+  <%= form_with model: [@post, @comment] do |f| %>
+    <div class="form-floating">
+      <%= f.text_area :body, class: "form-control", placeholder: "Leave a comment here", id: "floatingTextarea" %>
+      <label for="floatingTextarea">Leave a comment here</label>
+      <div class="float-start mt-2 pt-1">
+        <%= f.submit 'Update comment', class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+  <br><br><br>
+  <%= link_to 'Back to post', post_path(@post), class: 'btn btn-info btn-sm' %>
+</div>

@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+  <div class="comment-errors">
+    <%= render 'shared/errors', resource: @comment %>
+  </div>
+    <%= form_with model: [@post, @post.comments.new], id: 'new-comment' do |f| %>
+      <div class="form-floating">
+        <%= f.text_area :body, class: "form-control", placeholder: "Leave a comment here", id: "floatingTextarea" %>
+        <label for="floatingTextarea">Leave a comment here</label>
+        <div class="float-start mt-2 pt-1">
+          <%= f.submit 'Create comment', class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+<% end %>
