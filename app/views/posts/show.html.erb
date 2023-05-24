@@ -13,10 +13,12 @@
   </div>
 </div>
 <hr>
-<div class="float-end pt-1">
-  <%= link_to 'Edit post', edit_post_path(@post), class: 'btn btn-info btn-sm' %>
-  <%= link_to 'Delete post', post_path(@post), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %>
-</div>
+<% if user_signed_in? %>
+  <div class="float-end pt-1">
+    <%= link_to 'Edit post', edit_post_path(@post), class: 'btn btn-info btn-sm' %>
+    <%= link_to 'Delete post', post_path(@post), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %>
+  </div>
+<% end %>
 <br>
 <div class="body">
   <%= @post.body %>
