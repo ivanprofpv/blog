@@ -54,6 +54,8 @@ gem "bootstrap", "~> 5.2.2"
 
 gem "active_storage_validations", "~> 1.0.3"
 
+gem "kaminari", "~> 1.2.2"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'rspec-rails', '~> 6.0', '>= 6.0.2'
