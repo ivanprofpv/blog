@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   let(:user) { create(:user) }
-  let!(:post) { create(:post, user:) }
+  let(:post) { create(:post, user:) }
+  let(:posts) { create_list(:post, 3, user: user) }
 
   it { should validate_presence_of :title }
   it { should validate_presence_of :body }
@@ -15,5 +16,11 @@ RSpec.describe Post, type: :model do
     attachment = build(:post, attachment: Rack::Test::UploadedFile.new("#{Rails.root}/public/apple-touch-icon.png",
                                                                        'image/png'))
     expect(post).to be_valid
+  end
+
+  describe "method user_posts" do
+    it "returns posts for a given user" do
+      expect(Post.user_posts(user)).to match_array(posts)
+    end
   end
 end

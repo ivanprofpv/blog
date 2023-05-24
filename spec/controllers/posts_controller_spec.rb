@@ -4,6 +4,7 @@ RSpec.describe PostsController, type: :controller do
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }
   let(:post) { create(:post, user:) }
+  let(:posts) { create_list(:post, 3, user: user) }
   let(:valid_params) do
     {
       post: {
@@ -17,6 +18,14 @@ RSpec.describe PostsController, type: :controller do
     it 'has a 200 status code' do
       get :index
       expect(response.status).to eq(200)
+    end
+  end
+
+  describe "GET #user_post" do
+    it "populates an array of posts for the current user" do
+      sign_in user
+      get :user_post
+      expect(assigns(:posts)).to match_array(posts)
     end
   end
 

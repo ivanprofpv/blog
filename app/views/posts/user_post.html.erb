@@ -1,0 +1,10 @@
+<br>
+<% if user_signed_in? %>
+  <%= link_to "All post", root_path, class: 'btn btn-info btn-sm' %>
+<br>
+  <% @posts.each do |post| %>
+    <%= link_to post_path(post) do %>
+      <li><%= post.title %></li>
+    <% end %>
+  <% end %>
+<% end %>

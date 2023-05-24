@@ -5,5 +5,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create edit update destroy]
   end
 
+
   root "posts#index"
+  get '/my', to: 'posts#user_post'
 end

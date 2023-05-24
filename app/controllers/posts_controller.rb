@@ -6,6 +6,11 @@ class PostsController < ApplicationController
     @posts = Post.order(created_at: :desc).page params[:page]
   end
 
+  def user_post
+    user = current_user
+    @posts = Post.user_posts(user)
+  end
+
   def show; end
 
   def new
