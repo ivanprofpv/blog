@@ -12,4 +12,8 @@ class Post < ApplicationRecord
   def self.user_posts(user)
     where('user_id = ?', user.id)
   end
+
+  def self.index_post
+    @posts = Post.where(is_active: true).order(created_at: :desc).page params[:page]
+  end
 end

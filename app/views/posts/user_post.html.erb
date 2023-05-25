@@ -4,7 +4,11 @@
 <br>
   <% @posts.each do |post| %>
     <%= link_to post_path(post) do %>
-      <li><%= post.title %></li>
+      <% if post.is_active? %>
+        <li><%= post.title %></li>
+      <% else %>
+        <li><%= post.title %> - not active!</li>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

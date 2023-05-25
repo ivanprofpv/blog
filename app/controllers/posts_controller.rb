@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :load_post, only: %i[show edit update destroy]
 
   def index
-    @posts = Post.order(created_at: :desc).page params[:page]
+    public_post
   end
 
   def user_post
@@ -61,5 +61,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body, :attachment)
+  end
+
+  def public_post
+    @posts = Post.where(is_active: true).order(created_at: :desc).page params[:page]
   end
 end
