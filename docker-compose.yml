@@ -1,0 +1,29 @@
+version: '3'
+services:
+  db:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_DB: "blog_development"
+      POSTGRES_USER: "blog"
+      POSTGRES_PASSWORD: "1234"
+      command: postgres -c 'create role blog with login password '1234' createdb;'
+  web:
+    build: .
+    environment:
+      DB_HOST: db
+      DB_NAME: blog_development
+      DB_USERNAME: blog
+      DB_PASSWORD: 1234
+    volumes:
+      - .:/app:cached
+    ports:
+      - "3000:3000"
+    command: rails server -b 0.0.0.0
+    depends_on:
+      - db
+volumes:
+  postgres_data: {}
+networks:
+  default:
+    name: blog
